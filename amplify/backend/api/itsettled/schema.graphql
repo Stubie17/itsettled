@@ -1,0 +1,14 @@
+type Item @model @key(name: "byItem", fields: ["id"]) @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
+  id: ID!
+  name: String!
+  detail: String!
+  votes: Int!
+  comments: [Comment] @connection(keyName: "byItem", fields: ["id"])
+}
+
+type Comment @model @key(name: "byItem", fields: ["itemID", "content"]) @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
+  id: ID!
+  itemID: ID!
+  item: Item @connection(fields: ["itemID"])
+  content: String!
+}
