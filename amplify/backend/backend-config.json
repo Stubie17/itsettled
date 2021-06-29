@@ -23,5 +23,21 @@
         }
       }
     }
+  },
+  "function": {
+    "itsettledUserFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "itsettled7b4789fa",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
+    }
   }
 }

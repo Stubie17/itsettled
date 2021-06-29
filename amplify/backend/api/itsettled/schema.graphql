@@ -1,3 +1,7 @@
+type Query {
+  user: User @function(name: "itsettledUserFunction-${env}")
+}
+
 type Item @model @key(name: "byItem", fields: ["id"]) @auth(rules: [{ allow: owner, operations: [create, delete] }]) {
   id: ID!
   name: String!
@@ -11,4 +15,32 @@ type Comment @model @key(name: "byItem", fields: ["itemID", "content"]) @auth(ru
   itemID: ID!
   item: Item @connection(fields: ["itemID"])
   content: String!
+}
+type User {
+  Username: String!
+  UserAttributes: [Value]
+  UserCreateDate: String
+  UserLastModifiedDate: String
+  Enabled: Boolean
+  UserStatus: UserStatus
+  MFAOptions: [MFAOption]
+  PreferredMfaSetting: String
+  UserMFASettingList: String
+}
+type Value {
+  Name: String!
+  Value: String
+}
+type MFAOption {
+  DeliveryMedium: String
+  AttributeName: String
+}
+enum UserStatus {
+  UNCONFIRMED
+  CONFIRMED
+  ARCHIVED
+  COMPROMISED
+  UNKNOWN
+  RESET_REQUIRED
+  FORCE_CHANGE_PASSWORD
 }

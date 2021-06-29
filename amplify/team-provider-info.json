@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "itsettled7b4789fa": {}
+      },
+      "function": {
+        "itsettledUserFunction": {
+          "deploymentBucketName": "amplify-amplifyba78a3a595fd4-staging-52109-deployment",
+          "s3Key": "amplify-builds/itsettledUserFunction-304a6e426430364e4375-build.zip"
+        }
       }
     }
   }

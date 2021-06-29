@@ -150,6 +150,42 @@ export type DeleteCommentInput = {
   id: string,
 };
 
+export type User = {
+  __typename: "User",
+  Username: string,
+  UserAttributes?:  Array<Value | null > | null,
+  UserCreateDate?: string | null,
+  UserLastModifiedDate?: string | null,
+  Enabled?: boolean | null,
+  UserStatus?: UserStatus | null,
+  MFAOptions?:  Array<MFAOption | null > | null,
+  PreferredMfaSetting?: string | null,
+  UserMFASettingList?: string | null,
+};
+
+export type Value = {
+  __typename: "Value",
+  Name: string,
+  Value?: string | null,
+};
+
+export enum UserStatus {
+  UNCONFIRMED = "UNCONFIRMED",
+  CONFIRMED = "CONFIRMED",
+  ARCHIVED = "ARCHIVED",
+  COMPROMISED = "COMPROMISED",
+  UNKNOWN = "UNKNOWN",
+  RESET_REQUIRED = "RESET_REQUIRED",
+  FORCE_CHANGE_PASSWORD = "FORCE_CHANGE_PASSWORD",
+}
+
+
+export type MFAOption = {
+  __typename: "MFAOption",
+  DeliveryMedium?: string | null,
+  AttributeName?: string | null,
+};
+
 export type ModelItemFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -358,6 +394,29 @@ export type DeleteCommentMutation = {
     createdAt: string,
     updatedAt: string,
     owner?: string | null,
+  } | null,
+};
+
+export type UserQuery = {
+  user?:  {
+    __typename: "User",
+    Username: string,
+    UserAttributes?:  Array< {
+      __typename: "Value",
+      Name: string,
+      Value?: string | null,
+    } | null > | null,
+    UserCreateDate?: string | null,
+    UserLastModifiedDate?: string | null,
+    Enabled?: boolean | null,
+    UserStatus?: UserStatus | null,
+    MFAOptions?:  Array< {
+      __typename: "MFAOption",
+      DeliveryMedium?: string | null,
+      AttributeName?: string | null,
+    } | null > | null,
+    PreferredMfaSetting?: string | null,
+    UserMFASettingList?: string | null,
   } | null,
 };
 

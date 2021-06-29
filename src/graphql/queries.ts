@@ -2,6 +2,13 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const user = /* GraphQL */ `
+  query User {
+    user {
+      Username
+    }
+  }
+`;
 export const getItem = /* GraphQL */ `
   query GetItem($id: ID!) {
     getItem(id: $id) {
@@ -39,6 +46,9 @@ export const listItems = /* GraphQL */ `
         detail
         votes
         comments {
+          items {
+            id
+          }
           nextToken
         }
         createdAt
