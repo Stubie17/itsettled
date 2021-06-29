@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     fetchItems();
-  });
+  }, []);
 
   async function fetchItems() {
     const apiData = await API.graphql({ query: listItems }) as GraphQLResult<ListItemsQuery>;
